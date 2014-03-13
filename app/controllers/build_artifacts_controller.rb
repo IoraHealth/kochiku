@@ -1,5 +1,4 @@
 class BuildArtifactsController < ApplicationController
-
   def create
     @build_artifact = BuildArtifact.new
     @build_artifact.build_attempt_id = params[:build_attempt_id]
@@ -14,10 +13,11 @@ class BuildArtifactsController < ApplicationController
     end
   end
 
-  # A redirect is preferable to direct linking if logs are stored remotely with expiring urls.
   def show
-    build_artifact = BuildArtifact.find(params[:id])
-
-    redirect_to build_artifact.log_file.url
+    @project = Project.find_by_name!(params[:project_id])
+    @build = @project.builds.find(params[:build_id])
+    @build_part = @build.build_parts.find(params[:part_id])
+    @build_artifact = BuildArtifact.find(params[:id])
+    @log_output = @build_artifact.log_contents.gsub("\n", '<br />')
   end
 end
