@@ -40,6 +40,9 @@ gem 'nokogiri'
 gem 'pry-rails'
 gem 'pry-byebug'
 
+# Iora uses thin as our prod server
+gem 'thin'
+
 group :test, :development do
   gem 'haml_lint', require: false
   gem 'rubocop', require: false
@@ -55,7 +58,6 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'quiet_assets'
   gem 'capistrano-rvm', '~> 0.1', require: false
-  gem 'thin'
   gem 'rails-erd'
 end
 

@@ -6,6 +6,7 @@ class RepositoryObserver < ActiveRecord::Observer
   end
 
   def setup_hook?
+    return false ## ALEX DOES NOT HAVE CREDENTIALS FOR GITHUB HOOKS
     Rails.env.production? || Rails.env.staging?
   end
 end

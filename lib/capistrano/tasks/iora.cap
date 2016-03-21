@@ -1,0 +1,12 @@
+namespace :deploy do
+  task :restart do
+    on roles(:app) do
+      within current_path do
+        flags = "-P #{shared_path.join('pids/thin.pid')} -e production -p 8080 -d -l logs/thin.log"
+        # execute  :thin, "stop #{flags}"
+        # sleep 5
+        execute :bundle, "exec thin restart #{flags}"
+      end
+    end
+  end
+end

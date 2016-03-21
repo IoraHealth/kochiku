@@ -34,7 +34,7 @@ namespace :deploy do
 
   task :overwrite_database_yml do
     on roles(:app) do |host|
-      execute :mv, "#{release_path}/config/database.production.yml", "#{release_path}/config/database.yml"
+      execute :ln, '-nfFs', shared_path.join('config/database.yml'), release_path.join('config')
     end
   end
 end

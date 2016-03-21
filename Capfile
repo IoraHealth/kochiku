@@ -7,6 +7,7 @@ require 'capistrano/deploy'
 # Includes tasks from other gems included in your Gemfile
 require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'capistrano/rvm'
 
 # If you would like to use a Ruby version manager with kochiku
 # require it from a .cap file in lib/capistrano/tasks/.
